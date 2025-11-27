@@ -22,8 +22,8 @@
         <h1 style="text-align:center;margin-bottom:20px;">Acceso al área de clientes</h1>
 
         <div class="auth-container">
-          <!-- LOGIN -->
-          <div class="auth-card">
+          <!-- LOGIN ONLY -->
+          <div class="auth-card" style="max-width:480px;margin:0 auto;">
             <h2>Ya tengo cuenta</h2>
             <p class="muted">Inicia sesión para ver o administrar tus reservas.</p>
             <form id="login-form" novalidate>
@@ -38,50 +38,13 @@
               <button class="boton-submit" type="submit">Iniciar sesión</button>
               <p id="login-msg" class="muted" aria-live="polite"></p>
             </form>
-          </div>
 
-          <!-- REGISTER -->
-          <div class="auth-card">
-            <h2>Crear nueva cuenta</h2>
-            <p class="muted">Si aún no tienes cuenta, registra tus datos aquí.</p>
-            <form id="register-form" novalidate>
-              <div class="form-group">
-                <label for="reg-nombre">Nombre</label>
-                <input id="reg-nombre" name="nombre" type="text" required>
-              </div>
-              <div class="form-group">
-                <label for="reg-apellido1">Primer apellido</label>
-                <input id="reg-apellido1" name="apellido1" type="text" required>
-              </div>
-              <div class="form-group">
-                <label for="reg-apellido2">Segundo apellido</label>
-                <input id="reg-apellido2" name="apellido2" type="text">
-              </div>
-              <div class="form-group">
-                <label for="reg-telefono">Número telefónico</label>
-                <input id="reg-telefono" name="telefono" type="tel" placeholder="55 1234 5678" required>
-              </div>
-              <div class="form-group">
-                <label for="reg-estado">Estado donde vives</label>
-                <input id="reg-estado" name="estado" type="text" required>
-              </div>
-              <div class="form-group">
-                <label for="reg-email">Correo electrónico</label>
-                <input id="reg-email" name="email" type="email" required>
-              </div>
-              <div class="form-group">
-                <label for="reg-password">Contraseña</label>
-                <input id="reg-password" name="password" type="password" required placeholder="Mínimo 8 caracteres">
-              </div>
-              <div class="form-group">
-                <label for="reg-password2">Repetir contraseña</label>
-                <input id="reg-password2" name="password2" type="password" required>
-              </div>
-              <button class="boton-submit" type="submit">Crear cuenta</button>
-              <p id="register-msg" class="muted" aria-live="polite"></p>
-            </form>
+            <!-- Link para crear cuenta (aparece sólo si el usuario no tiene cuenta) -->
+            <div style="margin-top:18px;text-align:center">
+              <p class="muted">¿No tienes cuenta?</p>
+              <a href="create-account.html" class="boton-reserva" style="text-decoration:none;padding:8px 12px;border-radius:8px;display:inline-block">Crear usuario</a>
+            </div>
           </div>
-
         </div>
 
       </div>

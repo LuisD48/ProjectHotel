@@ -78,3 +78,8 @@ footer{padding:18px;text-align:center;color:var(--muted)}
 .auth-card .form-group input{width:100%}
 .auth-card .boton-submit{margin-top:8px}
 .auth-card p[aria-live]{margin-top:10px;font-weight:600}
+
+/* Página Crear Cuenta - ligera variación */
+.create-account-only .auth-card{padding:22px}
+.create-account-only input{padding:10px}
+.create-account-only .boton-submit{width:100%;font-size:1rem}
