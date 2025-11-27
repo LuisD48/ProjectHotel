@@ -116,5 +116,39 @@ def crear_reserva():
         cursor.close()
         cnx.close()
 
+
+# --- ENDPOINT: INICIAR SESIÓN (LOGIN) ---
+@app.route('/api/auth/login', methods=['POST'])
+def login_user():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+
+    cnx = get_db_connection()
+    if cnx is None:
+        return jsonify({"error": "Error de conexión"}), 500
+
+    cursor = cnx.cursor(dictionary=True)
+    try:
+        # Buscar usuario por email
+        cursor.execute("SELECT * FROM Usuarios WHERE email = %s", (email,))
+        user = cursor.fetchone()
+
+        if user and check_password_hash(user['password_hash'], password):
+            # ¡Éxito! Retornamos el nombre para guardarlo en el navegador
+            return jsonify({
+                "mensaje": "Login exitoso",
+                "usuario": {
+                    "id": user['id'],
+                    "nombre": user['nombre']
+                }
+            }), 200
+        else:
+            return jsonify({"error": "Correo o contraseña incorrectos"}), 401
+    finally:
+        cursor.close()
+        cnx.close()
+
 if __name__ == '__main__':
     app.run(debug=True)
+

@@ -115,9 +115,35 @@ async function handleFormSubmit(event) {
     }
 }
 
-// --- C. Inicialización ---
+function verificarSesion() {
+    const nombreUsuario = localStorage.getItem('usuario_nombre');
+    const loginContainer = document.querySelector('.login-link a');
+    const userIcon = document.querySelector('.user-icon');
+    const loginText = document.querySelector('.login-text');
+
+    if (nombreUsuario && loginContainer) {
+        // Cambiar el icono a uno de usuario logueado
+        userIcon.textContent = '👤'; 
+        // Cambiar "Iniciar sesión" por "Hola, Juan"
+        loginText.textContent = `Hola, ${nombreUsuario}`;
+        
+        // Opcional: Cambiar el enlace para que ahora sea "Cerrar sesión"
+        loginContainer.href = "#";
+        loginContainer.onclick = (e) => {
+            e.preventDefault();
+            if(confirm("¿Deseas cerrar sesión?")) {
+                localStorage.removeItem('usuario_nombre');
+                localStorage.removeItem('usuario_id');
+                window.location.reload();
+            }
+        };
+    }
+}
+
+// Agregar la llamada a la inicialización
 document.addEventListener('DOMContentLoaded', () => {
     cargarHabitaciones();
+    verificarSesion();
     
     // Conectar el formulario a la función de envío
     const form = document.getElementById('booking-form');

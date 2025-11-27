@@ -23,7 +23,6 @@ if (loginForm) {
     }
 
     try {
-      // Intentamos POST al endpoint de login - si no existe, lo simulamos
       const resp = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
@@ -31,16 +30,23 @@ if (loginForm) {
       });
 
       if (!resp.ok) {
-        // si falla la petición (404 u otro), mostramos mensaje del servidor o simulamos
         const data = await resp.json().catch(()=>({}));
-        const msg = data?.error || 'Error al iniciar sesión (simulado).';
-        showMessage(loginMsg, msg, 'red');
+        showMessage(loginMsg, data.error || 'Credenciales incorrectas.', 'red');
         return;
       }
 
       const data = await resp.json();
-      showMessage(loginMsg, 'Sesión iniciada correctamente', 'green');
-      // Aquí podrías guardar token en localStorage y redirigir: localStorage.setItem('token', data.token)
+      
+      // --- ESTO ES LO NUEVO: GUARDAR EL NOMBRE ---
+      // Guardamos el nombre del usuario en el navegador
+      localStorage.setItem('usuario_nombre', data.usuario.nombre);
+      localStorage.setItem('usuario_id', data.usuario.id);
+      
+      showMessage(loginMsg, `¡Bienvenido, ${data.usuario.nombre}! Redirigiendo...`, 'green');
+      
+      setTimeout(()=>{
+        window.location.href = 'index.html';
+      }, 1500);
 
     } catch (err) {
       // Si no hay backend activo, simulamos éxito para pruebas

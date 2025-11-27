@@ -18,12 +18,19 @@
   </header>
 
   <main>
-    <section class="seccion" style="padding:48px 24px;">
+    <section class="seccion center-screen" style="padding:48px 24px;">
       <div class="container create-account-only" style="max-width:760px;margin:0 auto;">
         <h1 style="text-align:center;margin-bottom:8px;">Crear nueva cuenta</h1>
         <p class="muted" style="text-align:center;margin-bottom:18px">Rellena los datos para registrarte como cliente y poder reservar en línea.</p>
 
-        <div class="auth-card">
+        <div class="auth-card" style="text-align:left;">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:6px">
+            <div class="auth-avatar" aria-hidden="true">🐵</div>
+            <div>
+              <h2 style="margin:0">Registro de nuevo usuario</h2>
+              <p class="muted" style="margin:0;font-size:0.95rem">Crea una cuenta para usar el sistema de reservas.</p>
+            </div>
+          </div>
           <form id="create-form" novalidate>
             <div class="form-group">
               <label for="nombre">Nombre</label>
