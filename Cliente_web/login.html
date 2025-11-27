@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Iniciar sesión / Registrar — Hotel Paradiso</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <header role="banner">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
+      <div class="logo">🏨 <strong>Hotel Paradiso</strong></div>
+      <nav aria-label="Ir al sitio">
+        <a href="index.html">Inicio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="seccion" style="padding:48px 24px;">
+      <div class="container">
+        <h1 style="text-align:center;margin-bottom:20px;">Acceso al área de clientes</h1>
+
+        <div class="auth-container">
+          <!-- LOGIN -->
+          <div class="auth-card">
+            <h2>Ya tengo cuenta</h2>
+            <p class="muted">Inicia sesión para ver o administrar tus reservas.</p>
+            <form id="login-form" novalidate>
+              <div class="form-group">
+                <label for="login-email">Correo</label>
+                <input id="login-email" name="email" type="email" required placeholder="tu@ejemplo.com">
+              </div>
+              <div class="form-group">
+                <label for="login-password">Contraseña</label>
+                <input id="login-password" name="password" type="password" required placeholder="Contraseña">
+              </div>
+              <button class="boton-submit" type="submit">Iniciar sesión</button>
+              <p id="login-msg" class="muted" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <!-- REGISTER -->
+          <div class="auth-card">
+            <h2>Crear nueva cuenta</h2>
+            <p class="muted">Si aún no tienes cuenta, registra tus datos aquí.</p>
+            <form id="register-form" novalidate>
+              <div class="form-group">
+                <label for="reg-nombre">Nombre</label>
+                <input id="reg-nombre" name="nombre" type="text" required>
+              </div>
+              <div class="form-group">
+                <label for="reg-apellido1">Primer apellido</label>
+                <input id="reg-apellido1" name="apellido1" type="text" required>
+              </div>
+              <div class="form-group">
+                <label for="reg-apellido2">Segundo apellido</label>
+                <input id="reg-apellido2" name="apellido2" type="text">
+              </div>
+              <div class="form-group">
+                <label for="reg-telefono">Número telefónico</label>
+                <input id="reg-telefono" name="telefono" type="tel" placeholder="55 1234 5678" required>
+              </div>
+              <div class="form-group">
+                <label for="reg-estado">Estado donde vives</label>
+                <input id="reg-estado" name="estado" type="text" required>
+              </div>
+              <div class="form-group">
+                <label for="reg-email">Correo electrónico</label>
+                <input id="reg-email" name="email" type="email" required>
+              </div>
+              <div class="form-group">
+                <label for="reg-password">Contraseña</label>
+                <input id="reg-password" name="password" type="password" required placeholder="Mínimo 8 caracteres">
+              </div>
+              <div class="form-group">
+                <label for="reg-password2">Repetir contraseña</label>
+                <input id="reg-password2" name="password2" type="password" required>
+              </div>
+              <button class="boton-submit" type="submit">Crear cuenta</button>
+              <p id="register-msg" class="muted" aria-live="polite"></p>
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Hotel Paradiso</p>
+    </div>
+  </footer>
+
+  <script src="login.js"></script>
+</body>
+</html>

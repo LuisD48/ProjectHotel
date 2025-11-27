@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reserva habitaciones en Hotel Paradiso de forma fácil y segura. Ofertas, ubicación y atención personalizada.">
+    <title>Hotel Paradiso | Reservas en Línea</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header role="banner">
+        <div class="container">
+            <div class="logo" aria-label="Hotel Paradiso">🏨 <span>Hotel Paradiso</span></div>
+            <nav role="navigation" aria-label="Menú principal">
+                <a href="#habitaciones-lista">Habitaciones</a>
+                <a href="#ubicacion-mapa">Ubicación</a>
+                <a href="#formulario-reserva">Reservar</a>
+            </nav>
+            <!-- Icono / enlace de inicio de sesión -->
+            <div class="login-link">
+                <a href="login.html" aria-label="Iniciar sesión">
+                    <span class="user-icon" title="Iniciar sesión" role="img">🐵</span>
+                    <span class="login-text">Iniciar sesión</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+    <section id="hero" class="seccion" aria-labelledby="hero-title">
+        <div class="container" style="text-align:center;padding:48px 24px">
+            <h1 id="hero-title">Tu escape perfecto te espera</h1>
+            <p class="lema">Disfruta de tranquilidad y confort en el corazón de la ciudad. Reserva en línea de forma rápida y segura.</p>
+            <a href="#formulario-reserva" class="boton-reserva" aria-label="Reservar ahora">Ver ofertas y reservar</a>
+        </div>
+    </section>
+
+    <section id="habitaciones-lista" class="seccion" aria-labelledby="habitaciones-title">
+        <div class="container">
+            <h2 id="habitaciones-title">Habitaciones Disponibles</h2>
+            <p class="subtitulo">Selecciona la que mejor se adapte a tu viaje. Los precios son por noche.</p>
+            <div id="contenedor-habitaciones" class="cards-container">
+                <p>Cargando habitaciones...</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="formulario-reserva" class="seccion formulario-fondo" aria-labelledby="reserva-title">
+        <div class="container">
+            <h2 id="reserva-title">Confirma tu reserva</h2>
+            <form id="booking-form" novalidate>
+                <div class="form-group">
+                    <label for="room_id">ID Habitación a reservar</label>
+                    <input type="number" id="room_id" name="habitacion_id" required placeholder="Selecciona una habitación arriba">
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre_cliente" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group fecha-group">
+                    <div>
+                        <label for="fecha_entrada">Fecha de entrada</label>
+                        <input type="date" id="fecha_entrada" name="fecha_entrada" required>
+                    </div>
+                    <div>
+                        <label for="fecha_salida">Fecha de salida</label>
+                        <input type="date" id="fecha_salida" name="fecha_salida" required>
+                    </div>
+                </div>
+                <button type="submit" class="boton-submit">Confirmar reserva</button>
+            </form>
+            <p id="mensaje-reserva" role="status" aria-live="polite"></p>
+        </div>
+    </section>
+
+    <section id="ubicacion-mapa" class="seccion" aria-labelledby="ubicacion-title">
+        <div class="container">
+            <h2 id="ubicacion-title">Nuestra ubicación</h2>
+            <p class="lema">Estamos en el centro histórico, cerca de los atractivos turísticos.</p>
+            <div class="mapa-placeholder" style="margin-bottom:12px;">
+                <div class="map-container" style="border-radius:8px;overflow:hidden;box-shadow:0 6px 18px rgba(13,38,59,0.06)">
+                    <!-- Cambia lat/lng abajo a las coordenadas reales de tu hotel -->
+                    <iframe id="map-iframe" title="Mapa de Hotel Paradiso" src="about:blank" width="100%" height="300" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+            <div class="contacto-info">
+                <p>📍 Dirección: Calle Ficticia #123, Centro.</p>
+                <p>📞 Teléfono: +52 55 1234 5678</p>
+                <p>📧 Email: reservas@hotelparadiso.com</p>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Hotel Paradiso. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
