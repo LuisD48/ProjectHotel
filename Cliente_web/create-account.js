@@ -18,6 +18,47 @@ function validatePassword(password){
 const createForm = document.getElementById('create-form');
 const createMsg = document.getElementById('create-msg');
 
+// Cargar lista de estados desde la API y poblar el select
+async function loadEstados() {
+  const select = document.getElementById('estado');
+  const helper = document.getElementById('estado-help');
+  if (!select) return;
+  select.innerHTML = '<option value="">Cargando estados...</option>';
+
+  try {
+    const resp = await fetch(`${API_URL}/api/estados`);
+    if (!resp.ok) throw new Error('No se pudieron cargar los estados');
+    const estados = await resp.json();
+
+    // Limpiar y crear opción por defecto
+    select.innerHTML = '<option value="">-- Selecciona un estado --</option>';
+
+    if (!Array.isArray(estados) || estados.length === 0) {
+      select.innerHTML = '<option value="">(No hay estados disponibles)</option>';
+      if (helper) helper.textContent = 'No se encontraron estados en la base de datos.';
+      return;
+    }
+
+    estados.forEach(s => {
+      // Soporta objetos con {id, nombre} o {id, estado}
+      const name = s.nombre || s.estado || s.name || String(s.id);
+      const opt = document.createElement('option');
+      opt.value = s.id;
+      opt.textContent = name;
+      select.appendChild(opt);
+    });
+
+    if (helper) helper.style.display = 'none';
+
+  } catch (err) {
+    console.warn('Error cargando estados desde API:', err);
+    select.innerHTML = '<option value="">No se pudo cargar la lista</option>';
+    if (helper) helper.textContent = 'No se pudieron cargar los estados (intenta más tarde).';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => loadEstados());
+
 if (createForm){
   createForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -27,7 +68,9 @@ if (createForm){
     const apellido1 = document.getElementById('apellido1').value.trim();
     const apellido2 = document.getElementById('apellido2').value.trim();
     const telefono = document.getElementById('telefono').value.replace(/\s+/g, '');
-    const estado = document.getElementById('estado').value.trim();
+    const estadoSel = document.getElementById('estado');
+    const estado = estadoSel ? estadoSel.value : '';
+    const estadoNombre = estadoSel && estadoSel.selectedOptions && estadoSel.selectedOptions[0] ? estadoSel.selectedOptions[0].text : '';
     const email = document.getElementById('email').value.trim();
     const pass = document.getElementById('password').value;
     const pass2 = document.getElementById('password2').value;
@@ -59,7 +102,8 @@ if (createForm){
       return;
     }
 
-    const payload = {nombre, apellido1, apellido2, telefono, estado, email, password: pass};
+    // Enviar tanto el id del estado como su nombre para mayor compatibilidad
+    const payload = {nombre, apellido1, apellido2, telefono, estado_id: estado, estado: estadoNombre, email, password: pass};
 
     try{
       const resp = await fetch(`${API_URL}/api/auth/register`, {

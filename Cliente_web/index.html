@@ -16,12 +16,12 @@
             <nav role="navigation" aria-label="Menú principal">
                 <a href="#habitaciones-lista">Habitaciones</a>
                 <a href="#ubicacion-mapa">Ubicación</a>
-                <a href="#formulario-reserva">Reservar</a>
+                <a href="#habitaciones-lista">Reservar</a>
             </nav>
             <!-- Icono / enlace de inicio de sesión -->
             <div class="login-link">
                 <a href="login.html" aria-label="Iniciar sesión">
-                    <span class="user-icon" title="Iniciar sesión" role="img">🐵</span>
+                    <span class="user-icon" title="Iniciar sesión" role="img">👤</span>
                     <span class="login-text">Iniciar sesión</span>
                 </a>
             </div>
@@ -33,7 +33,7 @@
         <div class="container" style="text-align:center;padding:48px 24px">
             <h1 id="hero-title">Tu escape perfecto te espera</h1>
             <p class="lema">Disfruta de tranquilidad y confort en el corazón de la ciudad. Reserva en línea de forma rápida y segura.</p>
-            <a href="#formulario-reserva" class="boton-reserva" aria-label="Reservar ahora">Ver ofertas y reservar</a>
+            <a href="#habitaciones-lista" class="boton-reserva" aria-label="Reservar ahora">Ver ofertas y reservar</a>
         </div>
     </section>
 
@@ -47,37 +47,7 @@
         </div>
     </section>
 
-    <section id="formulario-reserva" class="seccion formulario-fondo" aria-labelledby="reserva-title">
-        <div class="container">
-            <h2 id="reserva-title">Confirma tu reserva</h2>
-            <form id="booking-form" novalidate>
-                <div class="form-group">
-                    <label for="room_id">ID Habitación a reservar</label>
-                    <input type="number" id="room_id" name="habitacion_id" required placeholder="Selecciona una habitación arriba">
-                </div>
-                <div class="form-group">
-                    <label for="nombre">Nombre completo</label>
-                    <input type="text" id="nombre" name="nombre_cliente" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group fecha-group">
-                    <div>
-                        <label for="fecha_entrada">Fecha de entrada</label>
-                        <input type="date" id="fecha_entrada" name="fecha_entrada" required>
-                    </div>
-                    <div>
-                        <label for="fecha_salida">Fecha de salida</label>
-                        <input type="date" id="fecha_salida" name="fecha_salida" required>
-                    </div>
-                </div>
-                <button type="submit" class="boton-submit">Confirmar reserva</button>
-            </form>
-            <p id="mensaje-reserva" role="status" aria-live="polite"></p>
-        </div>
-    </section>
+    <!-- Reserva ahora se realiza en booking.html después de hacer click en "Reservar esta" en la tarjeta -->
 
     <section id="ubicacion-mapa" class="seccion" aria-labelledby="ubicacion-title">
         <div class="container">

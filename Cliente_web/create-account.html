@@ -50,7 +50,10 @@
             </div>
             <div class="form-group">
               <label for="estado">Estado donde vives</label>
-              <input id="estado" name="estado" type="text" required>
+              <select id="estado" name="estado" required>
+                <option value="">Cargando estados...</option>
+              </select>
+              <small id="estado-help" class="muted" style="display:block;margin-top:6px">Selecciona el estado donde resides.</small>
             </div>
             <div class="form-group">
               <label for="email">Correo electrónico</label>

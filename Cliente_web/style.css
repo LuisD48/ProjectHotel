@@ -89,6 +89,17 @@ footer{padding:18px;text-align:center;color:var(--muted)}
 
 .create-account-only .auth-card{max-width:760px;margin:0 auto}
 
+/* Booking page styles */
+.booking-layout{gap:20px}
+.booking-card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 8px 28px rgba(13,38,59,0.06)}
+.booking-card h3{margin:8px 0 4px}
+.booking-card p{margin:0 0 8px}
+
+@media (max-width:920px){
+    .booking-layout{grid-template-columns:1fr;}
+    .center-screen{padding-top:40px;padding-bottom:40px}
+}
+
 .auth-card .form-group input{width:100%}
 .auth-card .boton-submit{margin-top:12px;padding:12px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),#0088d1);border:none;color:#fff;font-weight:700;cursor:pointer;transition:transform .12s ease,opacity .12s ease}
 .auth-card .boton-submit:hover{transform:translateY(-2px);opacity:0.98}

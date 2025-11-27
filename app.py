@@ -90,6 +90,36 @@ def get_habitaciones():
         cursor.close()
         cnx.close()
 
+
+# --- ENDPOINT: OBTENER ESTADOS (GET) ---
+@app.route('/api/estados', methods=['GET'])
+def get_estados():
+    cnx = get_db_connection()
+    if cnx is None:
+        return jsonify({"error": "No se pudo conectar a la base de datos"}), 500
+
+    cursor = cnx.cursor(dictionary=True)
+
+    # Intentamos seleccionar nombre o estado según la columna disponible
+    try:
+        query = "SELECT id, nombre FROM Estados ORDER BY nombre"
+        cursor.execute(query)
+        estados = cursor.fetchall()
+        # si vienen vacíos, intentamos con otra posible columna
+        if not estados:
+            cursor.execute("SELECT id, estado as nombre FROM Estados ORDER BY estado")
+            estados = cursor.fetchall()
+
+        return jsonify(estados)
+
+    except mysql.connector.Error as err:
+        print(f"Error al obtener estados: {err}")
+        return jsonify({"error": "Error al obtener estados"}), 500
+
+    finally:
+        cursor.close()
+        cnx.close()
+
 # --- ENDPOINT: CREAR RESERVA ---
 @app.route('/api/reservar', methods=['POST'])
 def crear_reserva():

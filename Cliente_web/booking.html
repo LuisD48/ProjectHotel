@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Reservar habitación — Hotel Paradiso</title>
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+  <header role="banner">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;">
+      <div class="logo">🏨 <strong>Hotel Paradiso</strong></div>
+      <nav aria-label="Ir al sitio">
+        <a href="index.html">Inicio</a>
+        <a href="login.html">Iniciar sesión</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="seccion center-screen">
+      <div class="container" style="max-width:980px;">
+        <h1 style="text-align:center;margin-bottom:18px">Confirmar reserva</h1>
+
+        <div class="booking-layout" style="display:grid;grid-template-columns:360px 1fr;gap:18px;align-items:start">
+          <div class="booking-card" id="selected-room">
+            <!-- Datos de la habitación seleccionada aparecen aquí -->
+            <p class="muted">Cargando habitación seleccionada...</p>
+          </div>
+
+          <div class="auth-card" style="padding:20px;">
+            <h2 style="margin-top:0">Datos de la reserva</h2>
+            <form id="booking-form">
+              <input type="hidden" id="booking-room-id" name="habitacion_id">
+
+              <div class="form-group">
+                <label for="booking-nombre">Nombre completo</label>
+                <input id="booking-nombre" name="nombre_cliente" type="text" required>
+              </div>
+
+              <div class="form-group">
+                <label for="booking-email">Correo electrónico</label>
+                <input id="booking-email" name="email" type="email" required>
+              </div>
+
+              <div class="form-group fecha-group">
+                <div>
+                  <label for="booking-entrada">Fecha de entrada</label>
+                  <input id="booking-entrada" name="fecha_entrada" type="date" required>
+                </div>
+                <div>
+                  <label for="booking-salida">Fecha de salida</label>
+                  <input id="booking-salida" name="fecha_salida" type="date" required>
+                </div>
+              </div>
+
+              <button class="boton-submit" type="submit">Confirmar reserva</button>
+              <p id="booking-msg" role="status" aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Hotel Paradiso</p>
+    </div>
+  </footer>
+
+  <script src="booking.js"></script>
+</body>
+</html>
